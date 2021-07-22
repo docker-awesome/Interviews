@@ -4,7 +4,7 @@
 
 ## JavaScript Basic
 
-- Cookie, localStorage, sessionStorage 区别
+- ### Cookie, localStorage, sessionStorage 区别
 
   `生命周期：`
 
@@ -66,7 +66,7 @@
     容量很小（4KB），缺乏数据操作接口，而且会影响性能
   ```
 
-- 同源政策（“同源”指的是”三个相同“：`协议相同`， `域名相同`， `端口相同`）
+- ### 同源政策（“同源”指的是”三个相同“：`协议相同`， `域名相同`， `端口相同`）
 
   `非同源，共有三种行为受到限制:`
 
@@ -97,3 +97,108 @@
 
   （3）CORS: 跨源资源分享（Cross-Origin Resource Sharing）
   ```
+
+- ### script 脚本
+
+  `工作原理:`
+
+  ```text
+  1. 浏览器一边下载 HTML 网页，一边开始解析。也就是说，不等到下载完，就开始解析。
+  2. 解析过程中，浏览器发现<script>元素，就暂停解析，把网页渲染的控制权转交给 JavaScript 引擎。
+  3. 如果<script>元素引用了外部脚本，就下载该脚本再执行，否则就直接执行代码。
+  4. JavaScript 引擎执行完毕，控制权交还渲染引擎，恢复往下解析 HTML 网页。
+  ```
+
+  `defer 属性:`
+
+  ```text
+  1. 浏览器开始解析 HTML 网页。
+  2. 解析过程中，发现带有defer属性的<script>元素。
+  3. 浏览器继续往下解析 HTML 网页，同时并行下载<script>元素加载的外部脚本。
+  4. 浏览器完成解析 HTML 网页，此时再回过头执行已经下载完成的脚本。
+  ```
+
+  `async 属性:`
+
+  ```text
+  1. 浏览器开始解析 HTML 网页。
+  2. 解析过程中，发现带有async属性的script标签。
+  3. 浏览器继续往下解析 HTML 网页，同时并行下载<script>标签中的外部脚本。
+  4. 脚本下载完成，浏览器暂停解析 HTML 网页，开始执行下载的脚本。
+  5. 脚本执行完毕，浏览器恢复解析 HTML 网页。
+  ```
+
+- ### 回流(reflow) 和 重绘(repaint)
+
+  `浏览器渲染：`
+
+  ```text
+  1. 解析html生成DOM树，解析css，生成CSSOM树，将DOM树和CSSOM树结合，生成渲染树；
+  2. 根据渲染树，浏览器可以计算出网页中有哪些节点，各节点的CSS以及从属关系 - 回流
+  3. 根据渲染树以及回流得到的节点信息，计算出每个节点在屏幕中的位置 - 重绘
+  4. 最后将得到的节点位置信息交给浏览器的图形处理程序，让浏览器中显示页面
+  ```
+
+  `回流：`
+
+  ```text
+  指的是当渲染树中的节点信息发生了大小、边距等问题，需要重新计算各节点和css具体的大小和位置。
+
+  比如：
+  盒模型的相关操作，定位相关操作，浮动相关操作会触发重新布局。
+  改变节点的结构或其中的文本结构会触发重新布局。
+  CSS: width, height, padding, border, margin, position, top, left, bottom, right, float, clear, text-align, vertical-align, line-height, font-weight, font-size, font-family, overflow, white-space
+  ```
+
+  `重绘：`
+
+  ```text
+  指当节点的部分属性发生变化，但不影响布局，只需要重新计算节点在屏幕中的绝对位置并渲染的过程
+
+  比如：
+  改变元素的背景颜色、字体颜色等操作会造成重绘。
+  CSS: color, border-style, border-radius, text-decoration, box-shadow, outline, background
+  ```
+
+  `回流的过程在重绘的过程前面，所以回流一定会重绘，但重绘不一定会引起回流。`
+
+- ### 防抖和节流
+
+`防抖：`
+
+```text
+触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间。
+（每次触发事件时都取消之前的延时调用方法）
+```
+
+`节流：`
+
+```text
+高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率
+（每次触发事件时都判断当前是否有等待执行的延时函数）
+```
+
+- ### TCP 三次握手 和 四次挥手
+
+  `三次握手：`
+
+  ```text
+  1. client -> server: 发送请求
+  2. server -> client: 准备接受
+  3. client -> server: 马上发送
+  ```
+
+  `四次挥手：`
+
+  ```text
+  1. client -> server: 请求保文发送完毕
+  2. server -> client: 请求保文接收完毕
+  3. server -> client: 响应保文发送完毕
+  4. client -> server: 响应保文接收完毕
+  ```
+
+- ### XSS 和 CRSF
+
+  `XSS: 跨站脚本攻击（Cross-Site Scripting）`
+
+  `CRSF: 跨站请求伪造（Cross-site request forgery）`
