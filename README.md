@@ -202,3 +202,12 @@
   `XSS: 跨站脚本攻击（Cross-Site Scripting）`
 
   `CRSF: 跨站请求伪造（Cross-site request forgery）`
+  
+ - ### 事件机制 & 事件委托
+
+  `DOM 事件流(Event Flow)存在三个阶段：事件捕获阶段、处于目标阶段、事件冒泡阶段。`
+  
+  ```text
+  1. 事件捕获(Event Capturing)
+  2. 事件冒泡(Dubbed Bubbling)
+  ```
