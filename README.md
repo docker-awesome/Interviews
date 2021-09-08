@@ -218,18 +218,19 @@
   
   ```text
   总原则 - 开闭原则（Open Closed Principle）
-  1. 单一职责原则（Single Responsibility Principle）
-  2. 里氏替换原则（Liskov Substitution Principle）
-  3. 依赖倒置原则（Dependence Inversion Principle）
-  4. 接口隔离原则（Interface Segregation Principle）
-  5. 迪米特法则（最少知道原则）(Law of Demeter)
-  6. 合成复用原则（Composite Reuse Principle）
+  
+  1. 单一职责原则 (Single Responsibility Principle)
+  2. 里氏替换原则 (Liskov Substitution Principle)
+  3. 依赖倒置原则 (Dependence Inversion Principle)
+  4. 接口隔离原则 (Interface Segregation Principle)
+  5. 迪米特法则 (Law of Demeter)
+  6. 合成复用原则 (Composite Reuse Principle)
   ```
 
   `设计模式的三大类:`
   
   ```text
-  1. 创建型模式（Creational Pattern）
-  2. 结构型模式（Structural Pattern）
-  3. 行为型模式（Behavioral Pattern）
+  1. 创建型模式 (Creational Pattern)
+  2. 结构型模式 (Structural Pattern)
+  3. 行为型模式 (Behavioral Pattern)
   ```
